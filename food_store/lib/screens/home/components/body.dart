@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/constants.dart';
+import 'package:food_store/models/Product.dart';
+
+import 'categorries.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -18,59 +21,13 @@ class Body extends StatelessWidget {
                   .headline5
                   ?.copyWith(fontWeight: FontWeight.bold)),
         ),
-        Categories()
+        Categories(),
+        Container(
+          height: 180,
+          width: 160,
+          decoration: BoxDecoration(color: products[0].color),
+        )
       ],
-    );
-  }
-}
-
-//sateful widget для категорий - stfu
-
-class Categories extends StatefulWidget {
-  const Categories({super.key});
-
-  @override
-  State<Categories> createState() => _CategoriesState();
-}
-
-class _CategoriesState extends State<Categories> {
-  List<String> categories = ["AnimeFood", "GoogleFood", "LineFood", "RealFood"];
-  int selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 25,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) => buildCategory(index),
-      ),
-    );
-  }
-
-  Widget buildCategory(int index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
-      child: Column(
-        //палочка выбора страницы - по центру
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            categories[index],
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: kTextColor,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: kDefaultPaddin / 4),
-            height: 2,
-            width: 50,
-            color: Colors.black,
-          )
-        ],
-      ),
     );
   }
 }
