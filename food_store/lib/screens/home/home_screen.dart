@@ -10,13 +10,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Body(),
+      body: const Body(),
     );
   }
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       elevation: 0,
       leading: IconButton(
         //иконка кнопки назад
@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           onPressed: () {},
+          // ignore: prefer_const_constructors
           icon: Icon(
             Icons.search_rounded,
             color: kTextColor,
@@ -40,13 +41,14 @@ class HomeScreen extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {},
+          // ignore: prefer_const_constructors
           icon: Icon(
             Icons.shopping_bag_outlined,
             color: kTextColor,
             size: 30.0,
           ),
         ),
-        SizedBox(width: kDefaultPaddin / 2)
+        const SizedBox(width: kDefaultPaddin / 2)
       ],
     );
   }

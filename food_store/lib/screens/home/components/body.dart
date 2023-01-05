@@ -3,6 +3,7 @@ import 'package:food_store/constants.dart';
 import 'package:food_store/models/Product.dart';
 
 import 'categorries.dart';
+import 'item_card.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -21,12 +22,23 @@ class Body extends StatelessWidget {
                   .headline5
                   ?.copyWith(fontWeight: FontWeight.bold)),
         ),
-        Categories(),
-        Container(
-          height: 180,
-          width: 160,
-          decoration: BoxDecoration(color: products[0].color),
-        )
+        const Categories(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+            child: GridView.builder(
+              itemCount: products.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: kDefaultPaddin,
+                crossAxisSpacing: kDefaultPaddin,
+                childAspectRatio: 0.75,
+              ),
+              itemBuilder: (context, index) =>
+                  ItemCard(product: products[index], press: () {}),
+            ),
+          ),
+        ),
       ],
     );
   }
